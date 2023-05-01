@@ -35,7 +35,7 @@ def predict(image):
 st.set_page_config(page_title="Haemoprotozoan Classifier")
 st.title("Haemoprotozoan Classifier")
 
-uploaded_file = st.file_uploader("Choose a bloodstream image", type="jpg")
+uploaded_file = st.file_uploader("Choose a bloodstream image", type=["jpg", "jpeg", "png"])
 st.subheader("OR")
 
 camera = st.camera_input("Take a picture")
