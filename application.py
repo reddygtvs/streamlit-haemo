@@ -40,7 +40,7 @@ st.title("Blood Sample Classifier")
 # Add a button to upload the image
 uploaded_file = st.file_uploader("Upload a blood sample image", type="jpg")
 
-camera = st.camera_input(disabled=True)
+camera = st.camera_input("Camera", disabled=True)
 # Add a button to start the camera
 if st.button("Take a picture"):
     camera = st.camera_input("Take a picture", disabled=False)
