@@ -6,47 +6,43 @@ import numpy as np
 import io
 import cv2
 
-# Load the models
 model = load_model("models/binaryClassifierV2.h5")
 classify = load_model("models/multiClass3.h5")
 
-# Define a function to preprocess the image
 def preprocess_image(img):
     img = tf.image.resize(img, (256, 256))
     return img
 
 def predict(image):
-    # Make prediction with binary classifier
+    
     img = preprocess_image(image)
     prediction = model.predict(np.expand_dims(img/255, 0))
     if prediction > 0.5:
-        # If positive, use multi class classifier
+       
         result = classify.predict(np.expand_dims(img/255, 0))
         prediction = np.argmax(result)
         if prediction == 0:
-            prediction_label = "Blood sample is infected - **Anaplasmosis**"
+            prediction_label = "Haemoprotozoan sample is infected - **Anaplasmosis**"
         elif prediction == 1:
-            prediction_label = "Blood sample is infected - **Babesiosis**"
+            prediction_label = "Haemoprotozoan sample is infected - **Babesiosis**"
         else:
-            prediction_label = "Blood sample is infected - **Theileriosis**"
+            prediction_label = "Haemoprotozoan sample is infected - **Theileriosis**"
     else:
-        prediction_label = "Blood sample is not infected"
+        prediction_label = "Sample is not infected"
     return prediction_label
 
-# Set the page configuration and title
-st.set_page_config(page_title="Blood Sample Classifier")
 
+st.set_page_config(page_title="Haemoprotozoan Classifier")
+st.title("Haemoprotozoan Classifier")
 
-# Add a button to upload the image
-uploaded_file = st.file_uploader("Choose a blood sample image", type="jpg")
+uploaded_file = st.file_uploader("Choose a bloodstream image", type="jpg")
 st.subheader("OR")
-# Add a button to start the camera
+
 camera = st.camera_input("Take a picture")
 
-# Get the image from the uploaded file or the camera and predict
 if uploaded_file is not None:
     image = Image.open(io.BytesIO(uploaded_file.read()))
-    st.image(image, caption="Blood sample", use_column_width=True)
+    st.image(image, caption="Bloodstream sample", use_column_width=True)
 
     if st.button("Predict from uploaded file"):
         prediction = predict(image)
