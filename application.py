@@ -43,7 +43,8 @@ uploaded_file = st.file_uploader("Upload a blood sample image", type="jpg")
 camera = st.camera_input("Camera", disabled=True)
 # Add a button to start the camera
 if st.button("Take a picture"):
-    camera = st.camera_input("Take a picture", disabled=False)
+    #camera = st.camera_input("Take a picture", disabled=False)
+    camera(disabled=False)
 
 # Get the image from the uploaded file or the camera and predict
 if uploaded_file is not None:
