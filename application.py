@@ -35,7 +35,7 @@ def predict(image):
 
 # Set the page configuration and title
 st.set_page_config(page_title="Blood Sample Classifier")
-st.title("Blood Sample Classifier")
+st.subheader("Haemoprotozoan Classifier")
 
 # Add a button to upload the image
 uploaded_file = st.file_uploader("Choose a blood sample image", type="jpg")
