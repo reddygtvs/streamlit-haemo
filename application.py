@@ -53,9 +53,6 @@ if uploaded_file is not None:
         st.header(f"Prediction: {prediction}")
 elif camera is not None:
     if st.button("Predict from camera"):
-        image_data = np.array(camera.to_bytes(), dtype=np.uint8)
-        image = cv2.imdecode(image_data, 1)
-        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        image = Image.fromarray(image)
+        image = Image.open(camera)
         prediction = predict(image)
         st.header(f"Prediction: {prediction}")
