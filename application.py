@@ -35,11 +35,11 @@ def predict(image):
 
 # Set the page configuration and title
 st.set_page_config(page_title="Blood Sample Classifier")
-st.subheader("Haemoprotozoan Classifier")
+
 
 # Add a button to upload the image
 uploaded_file = st.file_uploader("Choose a blood sample image", type="jpg")
-st.header("OR")
+st.subheader("OR")
 # Add a button to start the camera
 camera = st.camera_input("Take a picture")
 
