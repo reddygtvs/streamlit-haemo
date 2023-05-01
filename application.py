@@ -23,11 +23,11 @@ def predict(image):
         result = classify.predict(np.expand_dims(img/255, 0))
         prediction = np.argmax(result)
         if prediction == 0:
-            prediction_label = "Anaplasmosis"
+            prediction_label = "Blood sample is infected: **Anaplasmosis**"
         elif prediction == 1:
-            prediction_label = "Babesiosis"
+            prediction_label = "Blood sample is infected: **Babesiosis**"
         else:
-            prediction_label = "Theileriosis"
+            prediction_label = "Blood sample is infected: **Theileriosis**"
     else:
         prediction_label = "Blood sample is not infected"
     return prediction_label
@@ -44,4 +44,4 @@ if uploaded_file is not None:
 
     if st.button("Predict"):
         prediction = predict(image)
-        st.write(f"Prediction: {prediction}")
+        st.header(f"Prediction: {prediction}")
