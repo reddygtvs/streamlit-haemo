@@ -41,7 +41,7 @@ st.title("Blood Sample Classifier")
 uploaded_file = st.file_uploader("Choose a blood sample image", type="jpg")
 
 # Add a button to start the camera
-camera = st.camera_input()
+camera = st.camera_input("Take a picture")
 
 # Get the image from the uploaded file or the camera and predict
 if uploaded_file is not None:
