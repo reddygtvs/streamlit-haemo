@@ -4,7 +4,6 @@ from keras.models import load_model
 from PIL import Image
 import numpy as np
 import io
-import cv2
 
 model = load_model("models/binaryClassifierV2.h5")
 classify = load_model("models/multiClass3.h5")
